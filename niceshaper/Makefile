@@ -27,8 +27,8 @@ define Package/niceshaper
 endef
 
 define Package/niceshaper/conffiles
-	$(ETC_DIR)/niceshaper/class.conf
-	$(ETC_DIR)/niceshaper/config.conf
+	/etc/niceshaper/class.conf
+	/etc/niceshaper/config.conf
 endef
 
 define Package/niceshaper/description
