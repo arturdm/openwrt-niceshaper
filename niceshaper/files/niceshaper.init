@@ -1,0 +1,16 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2015-2016 Artur Stepniewski
+
+START=70
+USE_PROCD=1
+
+NICESHAPER=/usr/sbin/niceshaper
+
+start_service() {
+  [ -d /var/lib/niceshaper ] || mkdir -p /var/lib/niceshaper
+
+  procd_open_instance
+  procd_set_param command $NICESHAPER start --no-daemon
+  procd_set_param respawn
+  procd_close_instance
+}
