@@ -10,6 +10,8 @@ PKG_SOURCE_URL:=http://niceshaper.jedwabny.net/files
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 PKG_MD5SUM:=932687ab843c13e04ca8d02a08d8d58c
+PKG_MAINTAINER:=Artur Stepniewski <artur.stepniewski+openwrt@gmail.com>
+PKG_LICENSE:=GPL-2.0
 
 ETC_DIR=$(1)/etc
 SBIN_DIR=$(1)/usr/sbin
