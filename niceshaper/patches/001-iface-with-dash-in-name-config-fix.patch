@@ -1,0 +1,30 @@
+diff --git a/src/config.cc b/src/config.cc
+index bfcd12a..9e1b78a 100644
+--- a/src/config.cc
++++ b/src/config.cc
+@@ -661,8 +661,8 @@ int Config::directiveSplit (std::string arg, std::vector < std::string > &fpv)
+ 
+     for (unsigned int i=0; i<=t4.size(); i++) {
+         if (i == t4.size()) {
+-            if ((aux::awk(option, "-", 1) != "iface") || (aux::awk(option, "-", 2).empty()) || (aux::awk(option, "-", 3).size())) break;
+-            if (!ifaces->isValidSysDev(aux::awk(option, "-", 2))) { log->error(16, arg); return -1; }
++            if ((aux::awk(option, "-", 1) != "iface") || (aux::awk(option, "-", 2).empty())) break;
++            if (!ifaces->isValidSysDev(option.substr(6, option.find_first_of(" ") - 6))) { log->error(16, arg); return -1; }
+         } 
+         if ((i == t4.size()) || (option == t4.at(i))) {
+             if (i==t4.size()) t4.assign(t4iface_src, t4iface_src + sizeof(t4iface_src)/sizeof(t4iface_src[0]));
+diff --git a/src/main.cc b/src/main.cc
+index d465d74..234198e 100644
+--- a/src/main.cc
++++ b/src/main.cc
+@@ -412,8 +412,8 @@ int proceed_global_config (std::vector <std::string> &fpv_conffile)
+             if (!ifaces->isValidSysDev(param)) { log->error (16, *fpvi); return -1; }
+             ifaces->setTcFilterType(param, FW);
+         }
+-        else if ((aux::awk(option, "-", 1) == "iface") && (ifaces->isValidSysDev(aux::awk(option, "-", 2)))) {
+-            dev = aux::awk(option, "-", 2);
++        else if ((aux::awk(option, "-", 1) == "iface") && (ifaces->isValidSysDev(option.substr(6, option.find_first_of(" ") - 6)))) {
++            dev = option.substr(6, option.find_first_of(" ") - 6);
+             if (param == "speed") {
+                 if ((aux::unit_convert(value, BITS) > MAX_RATE) || (aux::unit_convert(value, BITS) < MIN_RATE)) { log->error(806, *fpvi); return -1; }
+                 ifaces->setSpeed(dev, aux::unit_convert(value, BITS));
