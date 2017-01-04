@@ -3,13 +3,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=niceshaper
-PKG_VERSION:=1.2.3
+PKG_VERSION:=1.2.4
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=http://niceshaper.jedwabny.net/files
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
-PKG_MD5SUM:=b0fbd599127a0878a15fb1534d0e6dee
+PKG_MD5SUM:=e7b009d442e2f1857ae08ba88423e4e2
 
 ETC_DIR=$(1)/etc
 SBIN_DIR=$(1)/usr/sbin
